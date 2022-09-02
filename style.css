@@ -1,0 +1,14 @@
+body {
+  background-color: #eeefff;
+}
+span {
+  background-color: #5d5fef;
+  color: white;
+}
+.navbar-brand {
+  color: #5d5fef;
+}
+.nav-link:hover {
+  color: #5d5fef;
+  text-decoration: underline;
+}
