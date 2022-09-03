@@ -12,3 +12,9 @@ span {
   color: #5d5fef;
   text-decoration: underline;
 }
+#news-catagory {
+  color: #858585;
+}
+#news-catagory h5:hover {
+  color: #5d5fef;
+}
