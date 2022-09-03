@@ -83,8 +83,30 @@ const displayNews = (news) => {
   });
 };
 
-const newsDetails = (data) => {
-  console.log(data);
+const newsDetails = async (data) => {
+  const url = `https://openapi.programming-hero.com/api/news/${data}`;
+  const res = await fetch(url);
+  const news = await res.json();
+  displayModal(news.data);
+};
+
+const displayModal = (newsmodals) => {
+  newsmodals.forEach((modal) => {
+    const modalTitle = document.getElementById("newsModalLabel");
+    modalTitle.innerText = modal.title;
+    const modalBody = document.getElementById("modal-body");
+    modalBody.innerHTML = `
+    <h5> Author: ${
+      modal.author.name ? modal.author.name : "No Author Found"
+    }</h5>
+    <h5> Publish date: ${
+      modal.author.published_date
+        ? modal.author.published_date
+        : "No date found"
+    }</h5>
+    <h6> View: ${modal.total_view ? modal.total_view : "No viewers"}
+    `;
+  });
 };
 
 loadNewsCatagory();
