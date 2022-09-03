@@ -27,7 +27,14 @@ const catagoryNews = (id) => {
 
 const displayNews = (news) => {
   console.log(news);
+  const newsNumber = document.getElementById("news-number");
+  if (news.length > 0) {
+    newsNumber.innerText = ` ${news.length} News found `;
+  } else {
+    newsNumber.innerText = ` No News found `;
+  }
   const newsField = document.getElementById("news-con");
+  newsField.innerHTML = "";
   news.forEach((data) => {
     console.log(data);
     const newsData = document.createElement("div");
