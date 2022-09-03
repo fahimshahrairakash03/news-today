@@ -27,8 +27,24 @@ const catagoryNews = (id) => {
 
 const displayNews = (news) => {
   console.log(news);
+  const newsField = document.getElementById("news-con");
   news.forEach((data) => {
     console.log(data);
+    const newsData = document.createElement("div");
+    newsData.classList.add("col");
+    newsData.innerHTML = `
+    <div class="card p-4">
+            <img src="${data.thumbnail_url}" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">${data.title}</h5>
+              <p class="card-text">
+                ${data.details.slice(0, 200)} ...
+              </p>
+            </div>
+          </div>
+    `;
+
+    newsField.appendChild(newsData);
   });
 };
 

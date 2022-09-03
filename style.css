@@ -15,6 +15,9 @@ span {
 #news-catagory {
   color: #858585;
 }
-#news-catagory h5:hover {
+#news-catagory h6:hover {
   color: #5d5fef;
+}
+.news-number {
+  background-color: white;
 }
