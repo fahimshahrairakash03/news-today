@@ -26,7 +26,7 @@ const catagoryNews = (id) => {
 };
 
 const displayNews = (news) => {
-  console.log(news);
+  // console.log(news);
   const newsNumber = document.getElementById("news-number");
   if (news.length > 0) {
     newsNumber.innerText = ` ${news.length} News found `;
@@ -71,13 +71,20 @@ const displayNews = (news) => {
                   <i class="fa-regular fa-star"></i>
                 </div>
               </div>
-              <button class ="btn btn-primary mt-2"> Details </button>
+              <button class ="btn btn-primary mt-2" onclick= "newsDetails('${
+                data._id
+              }')"  data-bs-toggle="modal"
+              data-bs-target="#newsModal" > Details </button>
             </div>
           </div>
     `;
 
     newsField.appendChild(newsData);
   });
+};
+
+const newsDetails = (data) => {
+  console.log(data);
 };
 
 loadNewsCatagory();
