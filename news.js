@@ -2,7 +2,8 @@ const loadNewsCatagory = () => {
   const url = `https://openapi.programming-hero.com/api/news/categories`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displaycatagory(data.data.news_category));
+    .then((data) => displaycatagory(data.data.news_category))
+    .catch((error) => console.log(error));
 };
 
 const displaycatagory = (datas) => {
@@ -23,7 +24,8 @@ const catagoryNews = (id) => {
   const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayNews(data.data));
+    .then((data) => displayNews(data.data))
+    .catch((error) => console.log(error));
 };
 
 const displayNews = (news) => {
@@ -87,9 +89,13 @@ const displayNews = (news) => {
 
 const newsDetails = async (data) => {
   const url = `https://openapi.programming-hero.com/api/news/${data}`;
-  const res = await fetch(url);
-  const news = await res.json();
-  displayModal(news.data);
+  try {
+    const res = await fetch(url);
+    const news = await res.json();
+    displayModal(news.data);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const displayModal = (newsmodals) => {
