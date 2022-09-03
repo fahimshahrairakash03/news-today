@@ -18,6 +18,7 @@ const displaycatagory = (datas) => {
 };
 
 const catagoryNews = (id) => {
+  toggleSpinner(true);
   console.log(id);
   const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
   fetch(url)
@@ -49,12 +50,12 @@ const displayNews = (news) => {
               </p>
               <div class="d-flex align-items-center mb-3">
                 <img
-                  src= "${data.author.img}"
+                  src= "${data.author.name ? data.author.img : `No Image`}"
                   class="rounded-circle w-25 me-2"
                   alt="..."
                 />
                 <div>
-                  <h6>${data.author.name}</h6>
+                  <h6>${data.author.name ? data.author.name : "Anonymous"}</h6>
                   <h6 class="text-muted">${data.author.published_date}</h6>
                 </div>
               </div>
@@ -81,6 +82,7 @@ const displayNews = (news) => {
 
     newsField.appendChild(newsData);
   });
+  toggleSpinner(false);
 };
 
 const newsDetails = async (data) => {
@@ -107,6 +109,15 @@ const displayModal = (newsmodals) => {
     <h6> View: ${modal.total_view ? modal.total_view : "No viewers"}
     `;
   });
+};
+
+const toggleSpinner = (isloading) => {
+  const loaderSection = document.getElementById("loader");
+  if (isloading) {
+    loaderSection.classList.remove("d-none");
+  } else {
+    loaderSection.classList.add("d-none");
+  }
 };
 
 loadNewsCatagory();
